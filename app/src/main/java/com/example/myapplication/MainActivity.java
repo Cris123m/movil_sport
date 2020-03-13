@@ -195,6 +195,10 @@ public class MainActivity extends AppCompatActivity {
             Uri personPhoto = account.getPhotoUrl();
 
             Toast.makeText(MainActivity.this,personName + " " + personEmail,Toast.LENGTH_SHORT).show();
+
+            //Abrir otra Activity
+            Intent intent = new Intent(this,MenuActivity.class);
+            startActivityForResult(intent, 0);
         }
         //Facebook
         if(fUser != null){
@@ -206,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }else{
             //textViewUser.setText("");
-            mLogo.setImageResource(R.drawable.com_facebook_profile_picture_blank_square);
+            mLogo.setImageResource(R.drawable.football_ball);
         }
     }
 

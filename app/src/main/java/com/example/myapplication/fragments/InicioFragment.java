@@ -1,14 +1,19 @@
 package com.example.myapplication.fragments;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.interfaces.IComunicaFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +29,11 @@ public class InicioFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    View vista;
+    Activity actividad;
+    CardView cardHistoria,cardCalendario,cardEquipos,cardPosiciones,cardGoleadores,cardSanciones,cardJugadores,cardSalir;
+    IComunicaFragment interfaceComunicaFragment;
 
     public InicioFragment() {
         // Required empty public constructor
@@ -59,7 +69,87 @@ public class InicioFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        vista=inflater.inflate(R.layout.fragment_inicio, container, false);
+
+        cardHistoria=vista.findViewById(R.id.cardHistoria);
+        cardCalendario=vista.findViewById(R.id.cardCalendario);
+        cardEquipos=vista.findViewById(R.id.cardEquipos);
+        cardPosiciones=vista.findViewById(R.id.cardPosiciones);
+        cardGoleadores=vista.findViewById(R.id.cardGoleadores);
+        cardSanciones=vista.findViewById(R.id.cardSanciones);
+        cardJugadores=vista.findViewById(R.id.cardJugadores);
+        cardSalir=vista.findViewById(R.id.cardSalir);
+
+        eventosMenu();
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_inicio, container, false);
+        return vista;
+    }
+
+    private void eventosMenu(){
+        cardHistoria.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                interfaceComunicaFragment.verHistoria();
+            }
+        });
+
+        cardCalendario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                interfaceComunicaFragment.verCalendario();
+            }
+        });
+
+        cardEquipos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                interfaceComunicaFragment.verEquipos();
+            }
+        });
+
+        cardPosiciones.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                interfaceComunicaFragment.verTablaPosiciones();
+            }
+        });
+
+        cardGoleadores.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                interfaceComunicaFragment.verGoleadores();
+            }
+        });
+
+        cardSanciones.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                interfaceComunicaFragment.verSanciones();
+            }
+        });
+
+        cardJugadores.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                interfaceComunicaFragment.verJugadores();
+            }
+        });
+
+        cardSalir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                interfaceComunicaFragment.Salir();
+            }
+        });
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if(context instanceof Activity){
+            actividad = (Activity) context;
+            interfaceComunicaFragment = (IComunicaFragment) actividad;
+        }
     }
 }
