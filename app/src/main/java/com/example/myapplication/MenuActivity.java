@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -30,11 +31,15 @@ public class MenuActivity extends AppCompatActivity implements IComunicaFragment
     @Override
     public void verHistoria() {
         Toast.makeText(this, "Historia", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this,HistoriaActivity.class);
+        startActivityForResult(intent, 0);
     }
 
     @Override
     public void verCalendario() {
         Toast.makeText(this, "Ver calendario desde activity", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this,CalendarioActivity.class);
+        startActivityForResult(intent, 0);
     }
 
     @Override
@@ -64,6 +69,7 @@ public class MenuActivity extends AppCompatActivity implements IComunicaFragment
 
     @Override
     public void Salir() {
-
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivityForResult(intent, 0);
     }
 }

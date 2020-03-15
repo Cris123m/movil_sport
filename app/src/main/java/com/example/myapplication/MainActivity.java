@@ -62,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        recibirDatos();
+
         signInButton = findViewById(R.id.sign_in_button);
         mAuth = FirebaseAuth.getInstance();
         //Login Facebook
@@ -199,7 +201,10 @@ public class MainActivity extends AppCompatActivity {
             //Abrir otra Activity
             Intent intent = new Intent(this,MenuActivity.class);
             startActivityForResult(intent, 0);
+        }else{
+            mLogo.setImageResource(R.drawable.football_ball);
         }
+
         //Facebook
         if(fUser != null){
             //textViewUser.setText(fUser.getDisplayName());
@@ -208,6 +213,10 @@ public class MainActivity extends AppCompatActivity {
                 photoUrl = photoUrl + "?type=large";
                 Picasso.get().load(photoUrl).into(mLogo);
             }
+
+            //Abrir otra Activity
+            Intent intent = new Intent(this,MenuActivity.class);
+            startActivityForResult(intent, 0);
         }else{
             //textViewUser.setText("");
             mLogo.setImageResource(R.drawable.football_ball);
@@ -247,5 +256,18 @@ public class MainActivity extends AppCompatActivity {
         if(authStateListener != null){
             mAuth.removeAuthStateListener(authStateListener);
         }
+    }
+
+    private void recibirDatos(){
+        Bundle extras = getIntent().getExtras();
+        try {
+            boolean session = extras.getBoolean("session");
+            if (!session){
+                FirebaseAuth.getInstance().signOut();
+            }
+        }catch (Exception e){
+
+        }
+
     }
 }
