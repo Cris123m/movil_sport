@@ -64,11 +64,11 @@
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Jugar"
+                    android:text="Historia"
                     android:textAlignment="center"
-                    android:textColor="#ffcc00"
+                    android:textColor="#000000"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -107,7 +107,7 @@
                     android:layout_gravity="center_horizontal"
                     android:text="Jugar"
                     android:textAlignment="center"
-                    android:textColor="#ffcc00"
+                    android:textColor="#000000"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -146,7 +146,7 @@
                     android:layout_gravity="center_horizontal"
                     android:text="Jugar"
                     android:textAlignment="center"
-                    android:textColor="#ffcc00"
+                    android:textColor="#000000"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -185,7 +185,7 @@
                     android:layout_gravity="center_horizontal"
                     android:text="Jugar"
                     android:textAlignment="center"
-                    android:textColor="#ffcc00"
+                    android:textColor="#000000"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -224,7 +224,7 @@
                     android:layout_gravity="center_horizontal"
                     android:text="Jugar"
                     android:textAlignment="center"
-                    android:textColor="#ffcc00"
+                    android:textColor="#000000"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -263,7 +263,7 @@
                     android:layout_gravity="center_horizontal"
                     android:text="Sanciones"
                     android:textAlignment="center"
-                    android:textColor="#ffcc00"
+                    android:textColor="#000000"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -302,7 +302,7 @@
                     android:layout_gravity="center_horizontal"
                     android:text="Jugadores"
                     android:textAlignment="center"
-                    android:textColor="#ffcc00"
+                    android:textColor="#000000"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -341,7 +341,7 @@
                     android:layout_gravity="center_horizontal"
                     android:text="Salir"
                     android:textAlignment="center"
-                    android:textColor="#ffcc00"
+                    android:textColor="#000000"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 

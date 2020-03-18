@@ -30,46 +30,53 @@ public class MenuActivity extends AppCompatActivity implements IComunicaFragment
 
     @Override
     public void verHistoria() {
-        Toast.makeText(this, "Historia", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this,HistoriaActivity.class);
         startActivityForResult(intent, 0);
     }
 
     @Override
     public void verCalendario() {
-        Toast.makeText(this, "Ver calendario desde activity", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this,CalendarioActivity.class);
         startActivityForResult(intent, 0);
     }
 
     @Override
     public void verEquipos() {
-        Toast.makeText(this, "Ver equipos desde activity", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this,EquiposActivity.class);
+        startActivityForResult(intent, 0);
     }
 
     @Override
     public void verTablaPosiciones() {
-
+        Intent intent = new Intent(this,PosicionesActivity.class);
+        startActivityForResult(intent, 0);
     }
 
     @Override
     public void verGoleadores() {
-
+        Intent intent = new Intent(this,GoleadoresActivity.class);
+        intent.putExtra("idMenu",5);
+        startActivityForResult(intent, 0);
     }
 
     @Override
     public void verSanciones() {
-
+        Intent intent = new Intent(this,GoleadoresActivity.class);
+        intent.putExtra("idMenu",6);
+        startActivityForResult(intent, 0);
     }
 
     @Override
     public void verJugadores() {
-
+        Intent intent = new Intent(this,GoleadoresActivity.class);
+        intent.putExtra("idMenu",7);
+        startActivityForResult(intent, 0);
     }
 
     @Override
     public void Salir() {
         Intent intent = new Intent(this,MainActivity.class);
+        intent.putExtra("idMenu",false);
         startActivityForResult(intent, 0);
     }
 }

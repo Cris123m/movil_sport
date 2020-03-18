@@ -2,6 +2,7 @@ package com.example.myapplication.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,10 +14,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.CalendarioRecyclerViewAdapter;
+import com.example.myapplication.EquipoRecyclerViewAdapter;
 import com.example.myapplication.R;
 import com.example.myapplication.model.CalendarioModel;
 import com.example.myapplication.model.EquipoModel;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -30,6 +38,10 @@ public class CalendarioFragment extends Fragment {
     View vista;
     private RecyclerView recyclerViewCalendario;
     private CalendarioRecyclerViewAdapter adapterCalendario;
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference mDatabase;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -79,10 +91,61 @@ public class CalendarioFragment extends Fragment {
         recyclerViewCalendario=(RecyclerView)vista.findViewById(R.id.recyclerCalendario);
         recyclerViewCalendario.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
-        adapterCalendario = new CalendarioRecyclerViewAdapter(obtenerCalendario());
-        recyclerViewCalendario.setAdapter(adapterCalendario);
+        listarCalendario();
+        //adapterCalendario = new CalendarioRecyclerViewAdapter(obtenerCalendario());
+        //recyclerViewCalendario.setAdapter(adapterCalendario);
 
         return vista;
+    }
+
+    private void listarCalendario(){
+        mDatabase = database.getReference();
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                try {
+                    List<CalendarioModel> calendarios = new ArrayList<>();
+                    for(DataSnapshot equipoSnapshot: dataSnapshot.child("calendario").getChildren()){
+                        if(equipoSnapshot.exists()){
+                            CalendarioModel calendario = new CalendarioModel();
+                            String idCalendario = equipoSnapshot.child("idCalendario").getValue().toString();
+                            String fecha = equipoSnapshot.child("fecha").getValue().toString();
+                            String idFase = equipoSnapshot.child("idFase").getValue().toString();
+                            String equipo1Id = equipoSnapshot.child("equipo1Id").getValue().toString();
+                            String equipo2Id = equipoSnapshot.child("equipo2Id").getValue().toString();
+                            Date fechaD = new SimpleDateFormat("dd/MM/yyyy").parse(fecha);
+                            calendario.setIdCalendario(idCalendario);
+                            calendario.setFecha(fechaD);
+                            calendario.setIdFase(idFase);
+                            //Equipos
+                            EquipoModel equipo1 = new EquipoModel();
+                            EquipoModel equipo2 = new EquipoModel();
+                            DataSnapshot dsEquipo1 = dataSnapshot.child("equipo").child(equipo1Id);
+                            DataSnapshot dsEquipo2 = dataSnapshot.child("equipo").child(equipo2Id);
+                            equipo1.setIdEquipo(dsEquipo1.getValue().toString());
+                            equipo1.setNombre(dsEquipo1.child("nombre").getValue().toString());
+                            equipo1.setDescripcion(dsEquipo1.child("descripcion").getValue().toString());
+                            equipo2.setIdEquipo(dsEquipo2.getValue().toString());
+                            equipo2.setNombre(dsEquipo2.child("nombre").getValue().toString());
+                            equipo2.setDescripcion(dsEquipo2.child("descripcion").getValue().toString());
+                            calendario.setEquipo1(equipo1);
+                            calendario.setEquipo2(equipo2);
+                            calendarios.add(calendario);
+                        }
+                    }
+                    adapterCalendario = new CalendarioRecyclerViewAdapter(calendarios);
+                    recyclerViewCalendario.setAdapter(adapterCalendario);
+                }catch (Exception e){
+                    Toast.makeText(getActivity(), "Error: "+e.toString(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     public List<CalendarioModel> obtenerCalendario(){
