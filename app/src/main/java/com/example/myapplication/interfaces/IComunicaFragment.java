@@ -8,5 +8,6 @@ public interface IComunicaFragment {
     public void verGoleadores();
     public void verSanciones();
     public void verJugadores();
+    public void verEstadios();
     public void Salir();
 }
