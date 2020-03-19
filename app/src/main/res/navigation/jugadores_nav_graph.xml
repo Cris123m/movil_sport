@@ -9,5 +9,20 @@
         android:id="@+id/JugadorFragment"
         android:name="com.example.myapplication.fragments.JugadoresFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_jugadores"/>
+        tools:layout="@layout/fragment_jugadores">
+        <action
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/AgregarJugadorFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/AgregarJugadorFragment"
+        android:name="com.example.myapplication.fragments.AgregarJugadorFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_agregar_jugador">
+
+        <action
+            android:id="@+id/action_AgregarJugadorFragment_to_JugadorFragment"
+            app:destination="@id/JugadorFragment" />
+    </fragment>
 </navigation>

@@ -26,7 +26,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:backgroundTint="@color/colorPrimary"
+        android:tint="@color/primaryTextColor"
+        app:backgroundTint="@color/colorAccent"
+        app:srcCompat="@drawable/ic_more"
+        tools:ignore="VectorDrawableCompat" />
 
     <include layout="@layout/content_jugadores" />
 

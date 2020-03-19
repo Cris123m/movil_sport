@@ -62,8 +62,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recibirDatos();
-
         signInButton = findViewById(R.id.sign_in_button);
         mAuth = FirebaseAuth.getInstance();
         //Login Facebook
@@ -72,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.login_button);
         loginButton.setReadPermissions("email","public_profile");
         mCallbackManager = CallbackManager.Factory.create();
+
         loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -106,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        recibirDatos();
         btnSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -264,6 +264,9 @@ public class MainActivity extends AppCompatActivity {
             boolean session = extras.getBoolean("session");
             if (!session){
                 FirebaseAuth.getInstance().signOut();
+                mGoogleSignInClient.signOut();
+                Toast.makeText(MainActivity.this,"Ud. ha cerrado sesión",Toast.LENGTH_SHORT).show();
+                btnSignOut.setVisibility(View.INVISIBLE);
             }
         }catch (Exception e){
 
