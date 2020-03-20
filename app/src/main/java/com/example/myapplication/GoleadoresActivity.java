@@ -52,7 +52,7 @@ public class GoleadoresActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                switch (idMenu){
+                /*switch (idMenu){
                     case 7:
                         AgregarJugadorFragment agregarJugadorFragment = new AgregarJugadorFragment();
                         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -61,7 +61,7 @@ public class GoleadoresActivity extends AppCompatActivity {
                         fragmentTransaction.addToBackStack(null);
                         fragmentTransaction.commit();
                         break;
-                }
+                }*/
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }

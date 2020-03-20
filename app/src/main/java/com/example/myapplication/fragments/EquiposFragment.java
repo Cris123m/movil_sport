@@ -62,9 +62,11 @@ public class EquiposFragment extends Fragment {
                         String idEquipo = equipoSnapshot.child("idEquipo").getValue().toString();
                         String nombre = equipoSnapshot.child("nombre").getValue().toString();
                         String descripcion = equipoSnapshot.child("descripcion").getValue().toString();
+                        String logoEquipoURL = equipoSnapshot.child("logoEquipoURL").getValue().toString();
                         equipoDB.setIdEquipo(idEquipo);
                         equipoDB.setNombre(nombre);
                         equipoDB.setDescripcion(descripcion);
+                        equipoDB.setLogoEquipoURL(logoEquipoURL);
                         equipos.add(equipoDB);
                     }
                 }
@@ -79,7 +81,7 @@ public class EquiposFragment extends Fragment {
         });
     }
 
-    public List<EquipoModel> obtenerEquipos(){
+    /*public List<EquipoModel> obtenerEquipos(){
         mDatabase = database.getReference("equipo");
         List<EquipoModel> equipos = new ArrayList<>();
         equipos.add(new EquipoModel("1","Liga","LDU"));
@@ -109,7 +111,7 @@ public class EquiposFragment extends Fragment {
         });
 
         return equipos;
-    }
+    }*/
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

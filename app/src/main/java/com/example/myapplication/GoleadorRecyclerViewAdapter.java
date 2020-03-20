@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.model.GoleadorModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -51,6 +52,7 @@ public class GoleadorRecyclerViewAdapter extends RecyclerView.Adapter<GoleadorRe
         }
         holder.txtGoles.setText(Integer.toString(goleadoresLista.get(position).getGoles())+" "+textoGoles);
         //holder.logoEquipo.setImageResource();
+        Picasso.get().load(goleadoresLista.get(position).getJugador().getImgUrl()).error(R.drawable.ic_player).into(holder.imgGoleador);
     }
 
     @Override

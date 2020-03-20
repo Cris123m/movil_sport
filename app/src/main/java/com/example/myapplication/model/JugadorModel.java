@@ -9,11 +9,12 @@ public class JugadorModel {
     private String primerApellido;
     private String segundoApellido;
     private EquipoModel equipo;
+    private String imgUrl;
 
     public JugadorModel() {
     }
 
-    public JugadorModel(String idJugador, String cedula, int numero, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, EquipoModel equipo) {
+    public JugadorModel(String idJugador, String cedula, int numero, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, EquipoModel equipo, String imgUrl) {
         this.idJugador = idJugador;
         this.cedula = cedula;
         this.numero = numero;
@@ -22,6 +23,7 @@ public class JugadorModel {
         this.primerApellido = primerApellido;
         this.segundoApellido = segundoApellido;
         this.equipo = equipo;
+        this.imgUrl = imgUrl;
     }
 
     public String getIdJugador() {
@@ -86,5 +88,13 @@ public class JugadorModel {
 
     public void setEquipo(EquipoModel equipo) {
         this.equipo = equipo;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }

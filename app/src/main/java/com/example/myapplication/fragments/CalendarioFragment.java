@@ -125,9 +125,13 @@ public class CalendarioFragment extends Fragment {
                             equipo1.setIdEquipo(dsEquipo1.getValue().toString());
                             equipo1.setNombre(dsEquipo1.child("nombre").getValue().toString());
                             equipo1.setDescripcion(dsEquipo1.child("descripcion").getValue().toString());
+                            String logoEquipo1URL = dsEquipo1.child("logoEquipoURL").getValue().toString();
+                            equipo1.setLogoEquipoURL(logoEquipo1URL);
                             equipo2.setIdEquipo(dsEquipo2.getValue().toString());
                             equipo2.setNombre(dsEquipo2.child("nombre").getValue().toString());
                             equipo2.setDescripcion(dsEquipo2.child("descripcion").getValue().toString());
+                            String logoEquipo2URL = dsEquipo2.child("logoEquipoURL").getValue().toString();
+                            equipo2.setLogoEquipoURL(logoEquipo2URL);
                             calendario.setEquipo1(equipo1);
                             calendario.setEquipo2(equipo2);
                             calendarios.add(calendario);
@@ -148,7 +152,7 @@ public class CalendarioFragment extends Fragment {
         });
     }
 
-    public List<CalendarioModel> obtenerCalendario(){
+    /*public List<CalendarioModel> obtenerCalendario(){
         List<CalendarioModel> calendario = new ArrayList<>();
         EquipoModel equipo1 = new EquipoModel("1","Liga","LDU");
         EquipoModel equipo2 = new EquipoModel("1","Independiente del Valle","IDV");
@@ -156,5 +160,5 @@ public class CalendarioFragment extends Fragment {
         calendario.add(new CalendarioModel("2",new Date(),"Segunda",equipo2,equipo1));
 
         return calendario;
-    }
+    }*/
 }

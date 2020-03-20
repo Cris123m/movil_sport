@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.model.EquipoModel;
 import com.example.myapplication.model.PosicionModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -47,6 +48,7 @@ public class PosicionRecyclerViewAdapter extends RecyclerView.Adapter<PosicionRe
         holder.nombreEquipo.setText(posicionLista.get(position).getEquipo().getNombre());
         holder.descripcionEquipo.setText(posicionLista.get(position).getEquipo().getDescripcion());
         //holder.logoEquipo.setImageResource();
+        Picasso.get().load(posicionLista.get(position).getEquipo().getLogoEquipoURL()).error(R.drawable.logo_equipo).into(holder.logoEquipo);
     }
 
     @Override

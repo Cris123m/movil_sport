@@ -4,14 +4,16 @@ public class EquipoModel {
     private String idEquipo;
     private String nombre;
     private String descripcion;
+    private String logoEquipoURL;
 
     public EquipoModel() {
     }
 
-    public EquipoModel(String idEquipo, String nombre, String descripcion) {
+    public EquipoModel(String idEquipo, String nombre, String descripcion, String logoEquipoURL) {
         this.idEquipo = idEquipo;
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.logoEquipoURL = logoEquipoURL;
     }
 
     public String getIdEquipo() {
@@ -36,5 +38,13 @@ public class EquipoModel {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public String getLogoEquipoURL() {
+        return logoEquipoURL;
+    }
+
+    public void setLogoEquipoURL(String logoEquipoURL) {
+        this.logoEquipoURL = logoEquipoURL;
     }
 }

@@ -108,6 +108,7 @@ public class GoleadoresFragment extends Fragment {
         String primerApellido = dsJugador.child("primerApellido").getValue().toString();
         String segundoApellido = dsJugador.child("segundoApellido").getValue().toString();
         String equipoId = dsJugador.child("equipoId").getValue().toString();
+        String imgURL = dsJugador.child("imgURL").getValue().toString();
         jugador.setIdJugador(idJugador);
         jugador.setCedula(cedula);
         jugador.setNumero(Integer.parseInt(numero));
@@ -115,6 +116,7 @@ public class GoleadoresFragment extends Fragment {
         jugador.setSegundoNombre(segundoNombre);
         jugador.setPrimerApellido(primerApellido);
         jugador.setSegundoApellido(segundoApellido);
+        jugador.setImgUrl(imgURL);
         //Equipos
         EquipoModel equipo = obtenerEquipo(dataSnapshot,equipoId);
         jugador.setEquipo(equipo);

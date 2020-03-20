@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.model.CalendarioModel;
+import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -56,6 +57,9 @@ public class CalendarioRecyclerViewAdapter extends RecyclerView.Adapter<Calendar
         holder.descripcionEquipo1.setText(calendarioLista.get(position).getEquipo1().getDescripcion());
         holder.descripcionEquipo2.setText(calendarioLista.get(position).getEquipo2().getDescripcion());
         //holder.logoEquipo1.setImageResource();
+        Picasso.get().load(calendarioLista.get(position).getEquipo1().getLogoEquipoURL()).error(R.drawable.logo_equipo).into(holder.logoEquipo1);
+        Picasso.get().load(calendarioLista.get(position).getEquipo2().getLogoEquipoURL()).error(R.drawable.logo_equipo).into(holder.logoEquipo2);
+
     }
 
     @Override

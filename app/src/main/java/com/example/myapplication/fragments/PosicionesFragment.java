@@ -101,6 +101,7 @@ public class PosicionesFragment extends Fragment {
         equipo.setIdEquipo(dsEquipo.getValue().toString());
         equipo.setNombre(dsEquipo.child("nombre").getValue().toString());
         equipo.setDescripcion(dsEquipo.child("descripcion").getValue().toString());
+        equipo.setLogoEquipoURL(dsEquipo.child("logoEquipoURL").getValue().toString());
         return equipo;
     }
 

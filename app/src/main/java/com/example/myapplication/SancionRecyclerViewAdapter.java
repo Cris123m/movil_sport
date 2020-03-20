@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.model.SancionModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -50,6 +51,7 @@ import java.util.List;
             holder.txtSancion.setText(sancionLista.get(position).getDetalle());
 
             holder.imgJugador.setImageResource(R.drawable.ic_player);
+            Picasso.get().load(sancionLista.get(position).getJugador().getImgUrl()).error(R.drawable.ic_player).into(holder.imgJugador);
         }
 
         @Override

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.model.CalendarioModel;
 import com.example.myapplication.model.EquipoModel;
+import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -46,6 +47,7 @@ public class EquipoRecyclerViewAdapter extends RecyclerView.Adapter<EquipoRecycl
         holder.nombreEquipo.setText(equiposLista.get(position).getNombre());
         holder.descripcionEquipo.setText(equiposLista.get(position).getDescripcion());
         //holder.logoEquipo.setImageResource();
+        Picasso.get().load(equiposLista.get(position).getLogoEquipoURL()).error(R.drawable.logo_equipo).into(holder.logoEquipo);
     }
 
     @Override

@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.model.JugadorModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -50,7 +51,8 @@ public class JugadorRecyclerViewAdapter extends RecyclerView.Adapter<JugadorRecy
         holder.txtNomEquipo.setText(jugadoresLista.get(position).getEquipo().getNombre());
         holder.txtNumJugador.setText("N° Jugador: " + Integer.toString(jugadoresLista.get(position).getNumero()));
         holder.txtIdentificacion.setText("Identificación: " + jugadoresLista.get(position).getCedula());
-        //holder.logoEquipo.setImageResource();
+        holder.imgJugador.setImageResource(R.drawable.ic_player);
+        Picasso.get().load(jugadoresLista.get(position).getImgUrl()).error(R.drawable.ic_player).into(holder.imgJugador);
     }
 
     @Override
